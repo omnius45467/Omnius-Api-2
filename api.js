@@ -1,11 +1,9 @@
 var Cylon = require('cylon');
 var env = require('node-env-file'),
     controls = require('./controls'),
-    curl = require('curlrequest'),
     express = require("express"),
     http = require('http'),
-    app = express(),
-    bodyParser = require('body-parser');
+    app = express();
 
 env('./.env');
 

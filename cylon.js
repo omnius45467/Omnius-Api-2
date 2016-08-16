@@ -20,6 +20,10 @@ var Omnius = Cylon.robot({
 	connections: {
 		arduino: { adaptor: 'firmata', port: process.env.ARDUINO_PORT }
 	},
+	devices: {
+		servo1: { driver: 'servo', pin: 2 },
+		servo2: { driver: 'servo', pin: 4 }
+	},
 	work: function(){
 	},
 	commands: function() {
@@ -29,7 +33,13 @@ var Omnius = Cylon.robot({
 			backward: this.backward,
 			left: this.left,
 			right: this.right,
-			stop: this.stop
+			stop: this.stop,
+			servo1Min: this.servo1Min,
+			servo1Max: this.servo1Max,
+			servo2Min: this.servo2Min,
+			servo2Max: this.servo2Max,
+			servosMin: this.servosMin,
+			servosMax: this.servosMax
 		};
 	},
 	hello: function(){
@@ -152,6 +162,42 @@ var Omnius = Cylon.robot({
 			Omnius.connections.arduino.digitalWrite(8, 0);
 			Omnius.connections.arduino.digitalWrite(6, 0);
 			Omnius.connections.arduino.digitalWrite(5, 0);
+		});
+	},
+	servo1Min: function(){
+		console.log('servo-1-min');
+		after((0.1).seconds(), function(){
+			Omnius.servo1.angle(0);
+		});
+	},
+	servo1Max: function(){
+		console.log('servo-1-max');
+		after((0.1).seconds(), function(){
+			Omnius.servo1.angle(178);
+		});
+	},
+	servo2Min: function(){
+		console.log('servo-2-min');
+		after((0.1).seconds(), function(){
+			Omnius.servo2.angle(0);
+		});
+	},
+	servo2Max: function(){
+		console.log('servo-2-max');
+		after((0.1).seconds(), function(){
+			Omnius.servo2.angle(178);
+		});
+	},
+	servosMin: function(){
+		after((0.1).seconds(), function(){
+			Omnius.servo1.angle(0);
+			Omnius.servo2.angle(0);
+		});
+	},
+	servosMax: function(){
+		after((0.1).seconds(), function(){
+			Omnius.servo1.angle(178);
+			Omnius.servo2.angle(178);
 		});
 	}
 
