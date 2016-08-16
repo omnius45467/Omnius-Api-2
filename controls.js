@@ -6,17 +6,6 @@ var env = require('node-env-file'),
 env('./.env');
 var express = require('express');
 var controls = express();
-// var functions = [
-//     'forward',
-//     'backward',
-//     'left',
-//     'right',
-//     'stop',
-//     'servo1Min',
-//     'servo1Max',
-//     'servo2Min',
-//     'servo2Max'
-// ];
 agent.forEach(function(item){
     controls.get("/"+item, function (req, res) {
         curl.request('http://' + process.env.CYLON_HOST + ':' + process.env.CYLON_PORT + '/api/robots/' + process.env.ROBOT_NAME + '/commands/'+item, function (err) {
