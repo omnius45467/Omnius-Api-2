@@ -21,6 +21,7 @@ var Omnius = Cylon.robot({
 		arduino: { adaptor: 'firmata', port: process.env.ARDUINO_PORT }
 	},
 	devices: {
+		base: { driver: 'servo', pin: 3 },
 		servo1: { driver: 'servo', pin: 2 },
 		servo2: { driver: 'servo', pin: 4 }
 	},
@@ -39,7 +40,10 @@ var Omnius = Cylon.robot({
 			servo2Min: this.servo2Min,
 			servo2Max: this.servo2Max,
 			servosMin: this.servosMin,
-			servosMax: this.servosMax
+			servosMax: this.servosMax,
+			baseMin: this.baseMin,
+			baseMax: this.baseMax,
+			baseCenter: this.baseCenter
 		};
 	},
 	hello: function(){
@@ -198,6 +202,23 @@ var Omnius = Cylon.robot({
 		after((0.1).seconds(), function(){
 			Omnius.servo1.angle(178);
 			Omnius.servo2.angle(178);
+		});
+	},
+	baseMin: function(){
+		after((0.1).seconds(), function(){
+			Omnius.base.angle(0);
+		});
+	},
+	baseMax: function(){
+		after((0.1).seconds(), function(){
+			Omnius.base.angle(178);
+
+		});
+	},
+	baseCenter: function(){
+		after((0.1).seconds(), function(){
+			Omnius.base.angle(90);
+
 		});
 	}
 

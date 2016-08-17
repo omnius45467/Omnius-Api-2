@@ -2,9 +2,7 @@
  * Created by jeremyrobles on 8/15/16.
  */
 var api = require('./api.js'),
-    control = require('./controls'),
     cylon = require('./cylon'),
-    // comp = require("signal-control-utils").Comparison,
     env = require('node-env-file');
 
 env('./.env');
@@ -18,8 +16,12 @@ var agent = [
     'servo1Min',
     'servo1Max',
     'servo2Min',
-    'servo2Max'
+    'servo2Max',
+    'servosMin',
+    'servosMax',
+    'baseMin',
+    'baseMax',
+    'baseCenter'
 ];
 
-module.exports = agent; 
-
+module.exports = agent;

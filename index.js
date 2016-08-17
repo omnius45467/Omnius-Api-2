@@ -5,9 +5,9 @@ env('./.env');
 ngrok.connect({
     proto: 'http', // http|tcp|tls 
     addr: process.env.API_PORT, // port or network address
-    subdomain: process.env.NGROK_SUBDOMAIN, // reserved tunnel name https://alex.ngrok.io
+    subdomain: process.env.NGROK_SUBDOMAIN, // reserved tunnel
     authtoken: process.env.AUTH_TOKEN,
-    region: 'us' // one of ngrok regions (us, eu, au, ap), defaults to us 
+    region: 'us' // defaults to us 
 }, function (err, url) {
     if(!err){
         console.log(url);
