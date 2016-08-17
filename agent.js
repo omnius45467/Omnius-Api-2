@@ -21,7 +21,8 @@ var agent = [
     'servosMax',
     'baseMin',
     'baseMax',
-    'baseCenter'
+    'baseCenter',
+    'pca'
 ];
 
 module.exports = agent;

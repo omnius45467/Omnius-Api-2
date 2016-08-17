@@ -21,6 +21,7 @@ var Omnius = Cylon.robot({
 		arduino: { adaptor: 'firmata', port: process.env.ARDUINO_PORT }
 	},
 	devices: {
+		pca9685: { driver: 'pca9685'},
 		base: { driver: 'servo', pin: 3 },
 		servo1: { driver: 'servo', pin: 2 },
 		servo2: { driver: 'servo', pin: 4 }
@@ -43,7 +44,8 @@ var Omnius = Cylon.robot({
 			servosMax: this.servosMax,
 			baseMin: this.baseMin,
 			baseMax: this.baseMax,
-			baseCenter: this.baseCenter
+			baseCenter: this.baseCenter,
+			pca: this.pca
 		};
 	},
 	hello: function(){
@@ -219,6 +221,26 @@ var Omnius = Cylon.robot({
 		after((0.1).seconds(), function(){
 			Omnius.base.angle(90);
 
+		});
+	},
+	pca: function() {
+
+		var min = 700;
+		var max = 1100;
+		// set the frequency to 60hz
+		Omnius.pca9685.setPWMFreq(60);
+
+		// rotate to and hold the minium position
+		Omnius.pca9685.setPWM(0, 0, min);
+
+		after((5).seconds(), function() {
+			// rotate to and hold the maxium position
+			Omnius.pca9685.setPWM(0, 0, max);
+		});
+
+		after((10).seconds(), function() {
+			// reset and stop all outputs
+			Omnius.pca9685.stop();
 		});
 	}
 
