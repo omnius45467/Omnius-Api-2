@@ -23,7 +23,11 @@ var agent = [
     'servosMax',
     'headCenter',
     'headRight',
-    'headLeft'
+    'headLeft',
+    'liftLeftArm',
+    'liftRightArm',
+    'lowerLeftArm',
+    'lowerRightArm'
 ];
 
 module.exports = agent;

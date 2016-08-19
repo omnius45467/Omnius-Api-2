@@ -15,9 +15,10 @@ var Omnius = Cylon.robot({
 		servo1: { driver: 'servo', pin: 2 },
 		servo2: { driver: 'servo', pin: 3 },
 		servo3: { driver: 'servo', pin: 4 },
-		head:{ driver: 'servo', pin:11 },
-		servo4: { driver: 'servo', pin: 12 },
-		servo5: { driver: 'servo', pin: 13 }
+		// head: { driver: 'servo', pin: 5 },
+		servo4: { driver: 'servo', pin: 11 },
+		servo5: { driver: 'servo', pin: 12 },
+		servo6: { driver: 'servo', pin: 13 }
 	},
 	work: function(){
 	},
@@ -39,7 +40,11 @@ var Omnius = Cylon.robot({
 			servo3Min: this.servo3Min,
 			servo3Max: this.servo3Max,
 			servosMin: this.servosMin,
-			servosMax: this.servosMax
+			servosMax: this.servosMax,
+			liftLeftArm: this.liftLeftArm,
+			liftRightArm: this.liftRightArm,
+			lowerLeftArm:this.lowerLeftArm,
+			lowerRightArm:this.lowerRightArm
 		};
 	},
 	hello: function(){
@@ -57,9 +62,9 @@ var Omnius = Cylon.robot({
 		Omnius.connections.arduino.pinMode(5, 'OUTPUT');
 		after((0.1).seconds(), function() {
 			Omnius.connections.arduino.digitalWrite(10, 1);
+			Omnius.connections.arduino.digitalWrite(9, 1);
+			Omnius.connections.arduino.digitalWrite(8, 0);
 			Omnius.connections.arduino.digitalWrite(7, 1);
-			Omnius.connections.arduino.digitalWrite(9, 0);
-			Omnius.connections.arduino.digitalWrite(8, 1);
 			Omnius.connections.arduino.digitalWrite(6, 0);
 			Omnius.connections.arduino.digitalWrite(5, 1);
 		});
@@ -219,19 +224,61 @@ var Omnius = Cylon.robot({
 	headCenter: function(){
 		after((0.1).seconds(), function () {
 			console.log('head center');
-			Omnius.head.angle(90);
+			// Omnius.head.angle(90);
 		});
 	},
 	headRight: function(){
 		after((0.1).seconds(), function () {
 			console.log('head right');
-			Omnius.head.angle(0);
+			// Omnius.head.angle(0);
 		});
 	},
 	headLeft: function(){
 		after((0.1).seconds(), function () {
 			console.log('head left');
-			Omnius.head.angle(180);
+			// Omnius.head.angle(180);
+		});
+	},
+	lowerLeftArm: function(){
+		after((0.1).seconds(), function () {
+			console.log('max on left servo 1');
+			Omnius.servo1.angle(180);
+		});
+		after((0.2).seconds(), function () {
+			console.log('max on left servo 2');
+			Omnius.servo2.angle(180);
+		});
+		after((0.3).seconds(), function () {
+			console.log('max on left servo 3');
+			Omnius.servo3.angle(0);
+		});
+	},
+	liftLeftArm: function(){
+		after((0.1).seconds(), function () {
+			console.log('max on left servo 1');
+			Omnius.servo1.angle(0);
+		});
+		after((0.2).seconds(), function () {
+			console.log('max on left servo 2');
+			Omnius.servo2.angle(180);
+		});
+		after((0.3).seconds(), function () {
+			console.log('max on left servo 3');
+			Omnius.servo3.angle(0);
+		});
+	},
+	liftRightArm: function(){
+		after((0.1).seconds(), function () {
+			console.log('max on left servo 4');
+			Omnius.servo4.angle(0);
+		});
+		after((0.2).seconds(), function () {
+			console.log('max on left servo 5');
+			Omnius.servo5.angle(0);
+		});
+		after((0.3).seconds(), function () {
+			console.log('max on left servo 6');
+			Omnius.servo6.angle(0);
 		});
 	}
 });
