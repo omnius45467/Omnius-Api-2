@@ -4,16 +4,7 @@ var env = require('node-env-file');
 
 env('./.env');
 
-// Cylon.api('http', {
-//   	host: process.env.HOST,
-// 	port: process.env.PORT,
-// 	ssl: false,
-// 	auth: false
-// });
-
 Cylon.api = api;
-
-
 
 var Omnius = Cylon.robot({
 	name: process.env.ROBOT_NAME,
@@ -21,10 +12,12 @@ var Omnius = Cylon.robot({
 		arduino: { adaptor: 'firmata', port: process.env.ARDUINO_PORT }
 	},
 	devices: {
-		pca9685: { driver: 'pca9685'},
-		base: { driver: 'servo', pin: 3 },
 		servo1: { driver: 'servo', pin: 2 },
-		servo2: { driver: 'servo', pin: 4 }
+		servo2: { driver: 'servo', pin: 3 },
+		servo3: { driver: 'servo', pin: 4 },
+		head:{ driver: 'servo', pin:11 },
+		servo4: { driver: 'servo', pin: 12 },
+		servo5: { driver: 'servo', pin: 13 }
 	},
 	work: function(){
 	},
@@ -33,6 +26,9 @@ var Omnius = Cylon.robot({
 			say_hello: this.hello,
 			forward: this.forward,
 			backward: this.backward,
+			headCenter: this.headCenter,
+			headRight: this.headRight,
+			headLeft: this.headLeft,
 			left: this.left,
 			right: this.right,
 			stop: this.stop,
@@ -40,12 +36,10 @@ var Omnius = Cylon.robot({
 			servo1Max: this.servo1Max,
 			servo2Min: this.servo2Min,
 			servo2Max: this.servo2Max,
+			servo3Min: this.servo3Min,
+			servo3Max: this.servo3Max,
 			servosMin: this.servosMin,
-			servosMax: this.servosMax,
-			baseMin: this.baseMin,
-			baseMax: this.baseMax,
-			baseCenter: this.baseCenter,
-			pca: this.pca
+			servosMax: this.servosMax
 		};
 	},
 	hello: function(){
@@ -179,7 +173,7 @@ var Omnius = Cylon.robot({
 	servo1Max: function(){
 		console.log('servo-1-max');
 		after((0.1).seconds(), function(){
-			Omnius.servo1.angle(178);
+			Omnius.servo1.angle(180);
 		});
 	},
 	servo2Min: function(){
@@ -191,59 +185,55 @@ var Omnius = Cylon.robot({
 	servo2Max: function(){
 		console.log('servo-2-max');
 		after((0.1).seconds(), function(){
-			Omnius.servo2.angle(178);
+			Omnius.servo2.angle(180);
+		});
+	},
+	servo3Min: function(){
+		console.log('servo-3-min');
+		after((0.1).seconds(), function(){
+			Omnius.servo3.angle(0);
+		});
+	},
+	servo3Max: function(){
+		console.log('servo-3-max');
+		after((0.1).seconds(), function(){
+			Omnius.servo3.angle(180);
 		});
 	},
 	servosMin: function(){
 		after((0.1).seconds(), function(){
+			console.log('servos min');
 			Omnius.servo1.angle(0);
 			Omnius.servo2.angle(0);
+			Omnius.servo3.angle(0);
 		});
 	},
-	servosMax: function(){
-		after((0.1).seconds(), function(){
-			Omnius.servo1.angle(178);
-			Omnius.servo2.angle(178);
+	servosMax: function() {
+		after((0.1).seconds(), function () {
+			console.log('servos max');
+			Omnius.servo1.angle(180);
+			Omnius.servo2.angle(180);
+			Omnius.servo3.angle(180);
 		});
 	},
-	baseMin: function(){
-		after((0.1).seconds(), function(){
-			Omnius.base.angle(0);
+	headCenter: function(){
+		after((0.1).seconds(), function () {
+			console.log('head center');
+			Omnius.head.angle(90);
 		});
 	},
-	baseMax: function(){
-		after((0.1).seconds(), function(){
-			Omnius.base.angle(178);
-
+	headRight: function(){
+		after((0.1).seconds(), function () {
+			console.log('head right');
+			Omnius.head.angle(0);
 		});
 	},
-	baseCenter: function(){
-		after((0.1).seconds(), function(){
-			Omnius.base.angle(90);
-
-		});
-	},
-	pca: function() {
-
-		var min = 700;
-		var max = 1100;
-		// set the frequency to 60hz
-		Omnius.pca9685.setPWMFreq(60);
-
-		// rotate to and hold the minium position
-		Omnius.pca9685.setPWM(0, 0, min);
-
-		after((5).seconds(), function() {
-			// rotate to and hold the maxium position
-			Omnius.pca9685.setPWM(0, 0, max);
-		});
-
-		after((10).seconds(), function() {
-			// reset and stop all outputs
-			Omnius.pca9685.stop();
+	headLeft: function(){
+		after((0.1).seconds(), function () {
+			console.log('head left');
+			Omnius.head.angle(180);
 		});
 	}
-
 });
 
 module.exports = Omnius;

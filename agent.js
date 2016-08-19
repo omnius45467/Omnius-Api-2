@@ -17,12 +17,13 @@ var agent = [
     'servo1Max',
     'servo2Min',
     'servo2Max',
+    'servo3Min',
+    'servo3Max',
     'servosMin',
     'servosMax',
-    'baseMin',
-    'baseMax',
-    'baseCenter',
-    'pca'
+    'headCenter',
+    'headRight',
+    'headLeft'
 ];
 
 module.exports = agent;
