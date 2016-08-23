@@ -44,7 +44,8 @@ var Omnius = Cylon.robot({
 			liftLeftArm: this.liftLeftArm,
 			liftRightArm: this.liftRightArm,
 			lowerLeftArm:this.lowerLeftArm,
-			lowerRightArm:this.lowerRightArm
+			lowerRightArm:this.lowerRightArm,
+			wave: this.wave
 		};
 	},
 	hello: function(){
@@ -270,6 +271,20 @@ var Omnius = Cylon.robot({
 	liftRightArm: function(){
 		after((0.1).seconds(), function () {
 			console.log('max on left servo 4');
+			Omnius.servo4.angle(180);
+		});
+		after((0.2).seconds(), function () {
+			console.log('max on left servo 5');
+			Omnius.servo5.angle(0);
+		});
+		after((0.3).seconds(), function () {
+			console.log('max on left servo 6');
+			Omnius.servo6.angle(90);
+		});
+	},
+	lowerRightArm: function(){
+		after((0.1).seconds(), function () {
+			console.log('max on left servo 4');
 			Omnius.servo4.angle(0);
 		});
 		after((0.2).seconds(), function () {
@@ -278,6 +293,29 @@ var Omnius = Cylon.robot({
 		});
 		after((0.3).seconds(), function () {
 			console.log('max on left servo 6');
+			Omnius.servo6.angle(90);
+		});
+	},
+	wave: function(){
+		after((0.1).seconds(), function () {
+			Omnius.servo6.angle(0);
+		});
+		after((0.3).seconds(), function () {
+			Omnius.servo6.angle(180);
+		});
+		after((1).seconds(), function () {
+			Omnius.servo6.angle(0);
+		});
+		after((0.3).seconds(), function () {
+			Omnius.servo6.angle(180);
+		});
+		after((1).seconds(), function () {
+			Omnius.servo6.angle(0);
+		});
+		after((0.3).seconds(), function () {
+			Omnius.servo6.angle(180);
+		});
+		after((1).seconds(), function () {
 			Omnius.servo6.angle(0);
 		});
 	}
