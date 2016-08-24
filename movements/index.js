@@ -6,9 +6,10 @@ var backward = require('./backward');
 var right = require('./right');
 var left = require('./left');
 var stop = require('./stop');
+var liftLeftArm = require('./liftLeftArm');
 
 var movements = {};
-
+movements.liftLeftArm = liftLeftArm;
 movements.forward = forward;
 movements.backward = backward;
 movements.right = right;

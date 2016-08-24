@@ -1,7 +1,6 @@
 /**
  * Created by jeremyrobles on 8/22/16.
  */
-var Omnius = require('./cylon-index');
 var devices = {
     	servo1: { driver: 'servo', pin: 2 },
     	servo2: { driver: 'servo', pin: 3 },

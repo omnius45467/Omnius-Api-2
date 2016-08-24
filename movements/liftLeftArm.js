@@ -4,10 +4,12 @@
 
 var Omnius = require('../cylon-index');
 
+Omnius.devices = require('../devices');
+
 module.exports = function() {
     after((0.1).seconds(), function () {
         console.log('max on left servo 1');
-        Omnius.servo1.angle(0);
+        Omnius.devices.servo1.angle(0);
     });    
     after((0.2).seconds(), function () {
         console.log('max on left servo 2');

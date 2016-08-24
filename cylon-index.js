@@ -20,12 +20,12 @@ var Omnius = Cylon.robot({
 			say_hello: this.hello,
 			forward: movements.forward,
 			backward: movements.backward,
+			left: movements.left,
+			right: movements.right,
+			stop: movements.stop,
 			headCenter: this.headCenter,
 			headRight: this.headRight,
 			headLeft: this.headLeft,
-			left: movements.left,
-			right: movements.right,
-			stop: this.stop,
 			servo1Min: this.servo1Min,
 			servo1Max: this.servo1Max,
 			servo2Min: this.servo2Min,
@@ -38,29 +38,14 @@ var Omnius = Cylon.robot({
 			liftRightArm: this.liftRightArm,
 			lowerLeftArm:this.lowerLeftArm,
 			lowerRightArm:this.lowerRightArm,
-			wave: this.wave
+			wave: this.wave,
+			lowerArms: this.lowerArms,
+			liftArms: this.liftArms
 		};
 	},
 	hello: function(){
 		every((1).seconds, function(){
 			console.log("hello, humans!");
-		});
-	},
-	stop: function(){
-		console.log('stop');
-		Omnius.connections.arduino.pinMode(10, 'OUTPUT');
-		Omnius.connections.arduino.pinMode(9, 'OUTPUT');
-		Omnius.connections.arduino.pinMode(8, 'OUTPUT');
-		Omnius.connections.arduino.pinMode(7, 'OUTPUT');
-		Omnius.connections.arduino.pinMode(6, 'OUTPUT');
-		Omnius.connections.arduino.pinMode(5, 'OUTPUT');
-		after((0.1).seconds(), function() {
-			Omnius.connections.arduino.digitalWrite(10, 0);
-			Omnius.connections.arduino.digitalWrite(7, 0);
-			Omnius.connections.arduino.digitalWrite(9, 0);
-			Omnius.connections.arduino.digitalWrite(8, 0);
-			Omnius.connections.arduino.digitalWrite(6, 0);
-			Omnius.connections.arduino.digitalWrite(5, 0);
 		});
 	},
 	servo1Min: function(){
@@ -188,6 +173,14 @@ var Omnius = Cylon.robot({
 			console.log('max on left servo 6');
 			Omnius.servo6.angle(90);
 		});
+	},
+	lowerArms: function(){
+		this.lowerLeftArm();
+		this.lowerRightArm();
+	},
+	liftArms: function(){
+		this.liftLeftArm();
+		this.liftRightArm();
 	},
 	wave: function(){
 		after((0.1).seconds(), function () {

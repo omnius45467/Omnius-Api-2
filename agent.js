@@ -28,7 +28,9 @@ var agent = [
     'liftRightArm',
     'lowerLeftArm',
     'lowerRightArm',
-    'wave'
+    'wave',
+    'lowerArms',
+    'liftArms'
 ];
 
 module.exports = agent;
