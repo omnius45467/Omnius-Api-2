@@ -2,7 +2,7 @@
  * Created by jeremyrobles on 8/15/16.
  */
 var api = require('./api.js'),
-    cylon = require('./cylon'),
+    // cylon = require('./cylon-index'),
     env = require('node-env-file');
 
 env('./.env');

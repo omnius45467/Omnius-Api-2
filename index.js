@@ -1,4 +1,4 @@
-var cylon = require('./cylon');
+var cylon = require('./cylon-index');
 var ngrok = require('ngrok');
 var env = require('node-env-file');
 env('./.env');
