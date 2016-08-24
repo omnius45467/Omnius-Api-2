@@ -1,7 +1,6 @@
 var Omnius = require('../cylon-index');
 
 module.exports = function(){
-    console.log('forward');
     Omnius.connections.arduino.pinMode(10, 'OUTPUT');
     Omnius.connections.arduino.pinMode(9, 'OUTPUT');
     Omnius.connections.arduino.pinMode(8, 'OUTPUT');
