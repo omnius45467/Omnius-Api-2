@@ -7,9 +7,11 @@ var right = require('./right');
 var left = require('./left');
 var stop = require('./stop');
 var liftLeftArm = require('./liftLeftArm');
+var liftRightArm = require('./liftRightArm');
 
 var movements = {};
 movements.liftLeftArm = liftLeftArm;
+movements.liftRightArm = liftRightArm;
 movements.forward = forward;
 movements.backward = backward;
 movements.right = right;

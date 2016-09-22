@@ -16,8 +16,8 @@ module.exports = function(){
         Omnius.connections.arduino.digitalWrite(9, 1);
         Omnius.connections.arduino.digitalWrite(8, 0);
         Omnius.connections.arduino.digitalWrite(7, 1);
-        Omnius.connections.arduino.digitalWrite(6, 0);
-        Omnius.connections.arduino.digitalWrite(5, 1);
+        Omnius.connections.arduino.digitalWrite(6, 1);
+        Omnius.connections.arduino.digitalWrite(5, 0);
     });
     after((5).seconds(), function() {
         Omnius.connections.arduino.digitalWrite(10, 0);

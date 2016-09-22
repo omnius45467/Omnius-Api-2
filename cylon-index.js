@@ -18,11 +18,11 @@ var Omnius = Cylon.robot({
 	commands: function() {
 		return {
 			say_hello: this.hello,
-			forward: movements.forward,
-			backward: movements.backward,
-			left: movements.left,
-			right: movements.right,
-			stop: movements.stop,
+			forward: this.forward,
+			backward: this.backward,
+			left: this.left,
+			right: this.right,
+			stop: this.stop,
 			headCenter: this.headCenter,
 			headRight: this.headRight,
 			headLeft: this.headLeft,
@@ -40,8 +40,121 @@ var Omnius = Cylon.robot({
 			lowerRightArm:this.lowerRightArm,
 			wave: this.wave,
 			lowerArms: this.lowerArms,
-			liftArms: this.liftArms
+			liftArms: this.liftArms,
+			dance: this.dance
 		};
+	},
+	forward: function(){
+		Omnius.connections.arduino.pinMode(10, 'OUTPUT');
+		Omnius.connections.arduino.pinMode(9, 'OUTPUT');
+		Omnius.connections.arduino.pinMode(8, 'OUTPUT');
+		Omnius.connections.arduino.pinMode(7, 'OUTPUT');
+		Omnius.connections.arduino.pinMode(6, 'OUTPUT');
+		Omnius.connections.arduino.pinMode(5, 'OUTPUT');
+		after((0.1).seconds(), function() {
+			Omnius.connections.arduino.digitalWrite(10, 1);
+			Omnius.connections.arduino.digitalWrite(9, 1);
+			Omnius.connections.arduino.digitalWrite(8, 0);
+			Omnius.connections.arduino.digitalWrite(7, 1);
+			Omnius.connections.arduino.digitalWrite(6, 0);
+			Omnius.connections.arduino.digitalWrite(5, 1);
+		});
+		after((5).seconds(), function() {
+			Omnius.connections.arduino.digitalWrite(10, 0);
+			Omnius.connections.arduino.digitalWrite(7, 0);
+			Omnius.connections.arduino.digitalWrite(9, 0);
+			Omnius.connections.arduino.digitalWrite(8, 0);
+			Omnius.connections.arduino.digitalWrite(6, 0);
+			Omnius.connections.arduino.digitalWrite(5, 0);
+		});
+	},
+	backward:function(){
+		Omnius.connections.arduino.pinMode(10, 'OUTPUT');
+		Omnius.connections.arduino.pinMode(9, 'OUTPUT');
+		Omnius.connections.arduino.pinMode(8, 'OUTPUT');
+		Omnius.connections.arduino.pinMode(7, 'OUTPUT');
+		Omnius.connections.arduino.pinMode(6, 'OUTPUT');
+		Omnius.connections.arduino.pinMode(5, 'OUTPUT');
+		after((0.1).seconds(), function() {
+			Omnius.connections.arduino.digitalWrite(10, 1);
+			Omnius.connections.arduino.digitalWrite(7, 1);
+			Omnius.connections.arduino.digitalWrite(9, 1);
+			Omnius.connections.arduino.digitalWrite(8, 0);
+			Omnius.connections.arduino.digitalWrite(6, 1);
+			Omnius.connections.arduino.digitalWrite(5, 0);
+		});
+		after((5).seconds(), function() {
+			Omnius.connections.arduino.digitalWrite(10, 0);
+			Omnius.connections.arduino.digitalWrite(7, 0);
+			Omnius.connections.arduino.digitalWrite(9, 0);
+			Omnius.connections.arduino.digitalWrite(8, 0);
+			Omnius.connections.arduino.digitalWrite(6, 0);
+			Omnius.connections.arduino.digitalWrite(5, 0);
+		});
+	},
+	left:function(){
+		Omnius.connections.arduino.pinMode(10, 'OUTPUT');
+		Omnius.connections.arduino.pinMode(9, 'OUTPUT');
+		Omnius.connections.arduino.pinMode(8, 'OUTPUT');
+		Omnius.connections.arduino.pinMode(7, 'OUTPUT');
+		Omnius.connections.arduino.pinMode(6, 'OUTPUT');
+		Omnius.connections.arduino.pinMode(5, 'OUTPUT');
+		after((0.1).seconds(), function() {
+			Omnius.connections.arduino.digitalWrite(10, 1);
+			Omnius.connections.arduino.digitalWrite(7, 1);
+			Omnius.connections.arduino.digitalWrite(9, 0);
+			Omnius.connections.arduino.digitalWrite(8, 1);
+			Omnius.connections.arduino.digitalWrite(6, 1);
+			Omnius.connections.arduino.digitalWrite(5, 0);
+		});
+		after((5).seconds(), function() {
+			Omnius.connections.arduino.digitalWrite(10, 0);
+			Omnius.connections.arduino.digitalWrite(7, 0);
+			Omnius.connections.arduino.digitalWrite(9, 0);
+			Omnius.connections.arduino.digitalWrite(8, 0);
+			Omnius.connections.arduino.digitalWrite(6, 0);
+			Omnius.connections.arduino.digitalWrite(5, 0);
+		});
+	},
+	right:function(){
+
+		Omnius.connections.arduino.pinMode(10, 'OUTPUT');
+		Omnius.connections.arduino.pinMode(9, 'OUTPUT');
+		Omnius.connections.arduino.pinMode(8, 'OUTPUT');
+		Omnius.connections.arduino.pinMode(7, 'OUTPUT');
+		Omnius.connections.arduino.pinMode(6, 'OUTPUT');
+		Omnius.connections.arduino.pinMode(5, 'OUTPUT');
+		after((0.1).seconds(), function() {
+			Omnius.connections.arduino.digitalWrite(10, 1);
+			Omnius.connections.arduino.digitalWrite(7, 1);
+			Omnius.connections.arduino.digitalWrite(9, 1);
+			Omnius.connections.arduino.digitalWrite(8, 0);
+			Omnius.connections.arduino.digitalWrite(6, 0);
+			Omnius.connections.arduino.digitalWrite(5, 1);
+		});
+		after((5).seconds(), function() {
+			Omnius.connections.arduino.digitalWrite(10, 0);
+			Omnius.connections.arduino.digitalWrite(7, 0);
+			Omnius.connections.arduino.digitalWrite(9, 0);
+			Omnius.connections.arduino.digitalWrite(6, 0);
+			Omnius.connections.arduino.digitalWrite(5, 0);
+		});
+	},
+	stop:function(){
+		Omnius.connections.arduino.pinMode(10, 'OUTPUT');
+		Omnius.connections.arduino.pinMode(9, 'OUTPUT');
+		Omnius.connections.arduino.pinMode(8, 'OUTPUT');
+		Omnius.connections.arduino.pinMode(7, 'OUTPUT');
+		Omnius.connections.arduino.pinMode(6, 'OUTPUT');
+		Omnius.connections.arduino.pinMode(5, 'OUTPUT');
+		after((0.1).seconds(), function() {
+			Omnius.connections.arduino.digitalWrite(10, 0);
+			Omnius.connections.arduino.digitalWrite(7, 0);
+			Omnius.connections.arduino.digitalWrite(9, 0);
+			Omnius.connections.arduino.digitalWrite(8, 0);
+			Omnius.connections.arduino.digitalWrite(6, 0);
+			Omnius.connections.arduino.digitalWrite(5, 0);
+		});
 	},
 	hello: function(){
 		every((1).seconds, function(){
@@ -154,7 +267,7 @@ var Omnius = Cylon.robot({
 		});
 		after((1).seconds(), function () {
 		
-			Omnius.servo6.angle(90);
+			Omnius.servo6.angle(0);
 		});
 	},
 	lowerRightArm: function(){
@@ -185,27 +298,11 @@ var Omnius = Cylon.robot({
 			Omnius.servo5.angle(0);
 			Omnius.servo6.angle(0);
 		});
-		after((0.3).seconds(), function () {
-
-			Omnius.servo6.angle(180);
-		});
 		after((1).seconds(), function () {
 
-			Omnius.servo6.angle(0);
-		});
-		after((1.1).seconds(), function () {
-
 			Omnius.servo6.angle(180);
-		});
-		after((1.3).seconds(), function () {
-
-			Omnius.servo6.angle(0);
 		});
 		after((1.5).seconds(), function () {
-
-			Omnius.servo6.angle(180);
-		});
-		after((1.7).seconds(), function () {
 
 			Omnius.servo6.angle(0);
 		});
@@ -213,9 +310,31 @@ var Omnius = Cylon.robot({
 
 			Omnius.servo6.angle(180);
 		});
-		after((2.3).seconds(), function () {
+		after((2.5).seconds(), function () {
 
 			Omnius.servo6.angle(0);
+		});
+		after((3).seconds(), function () {
+
+			Omnius.servo6.angle(0);
+		});
+		after((3.3).seconds(), function() {
+			Omnius.commands.lowerArms();
+			
+		});
+	},
+	dance: function(){
+		after((0.1).seconds(), function(){
+			Omnius.commands.left();
+			Omnius.liftArms();
+		});
+		after((2).seconds(), function(){
+			Omnius.commands.right();
+			Omnius.commands.lowerArms();
+		});
+		after((5).seconds(), function(){
+			Omnius.commands.lowerLeftArm();
+			Omnius.commands.wave();
 		});
 	}
 });
