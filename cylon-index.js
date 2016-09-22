@@ -53,13 +53,13 @@ var Omnius = Cylon.robot({
 		Omnius.connections.arduino.pinMode(5, 'OUTPUT');
 		after((0.1).seconds(), function() {
 			Omnius.connections.arduino.digitalWrite(10, 1);
-			Omnius.connections.arduino.digitalWrite(9, 1);
-			Omnius.connections.arduino.digitalWrite(8, 0);
 			Omnius.connections.arduino.digitalWrite(7, 1);
+			Omnius.connections.arduino.digitalWrite(9, 0);
+			Omnius.connections.arduino.digitalWrite(8, 1);
 			Omnius.connections.arduino.digitalWrite(6, 0);
 			Omnius.connections.arduino.digitalWrite(5, 1);
 		});
-		after((5).seconds(), function() {
+		after((2).seconds(), function() {
 			Omnius.connections.arduino.digitalWrite(10, 0);
 			Omnius.connections.arduino.digitalWrite(7, 0);
 			Omnius.connections.arduino.digitalWrite(9, 0);
@@ -83,7 +83,7 @@ var Omnius = Cylon.robot({
 			Omnius.connections.arduino.digitalWrite(6, 1);
 			Omnius.connections.arduino.digitalWrite(5, 0);
 		});
-		after((5).seconds(), function() {
+		after((2).seconds(), function() {
 			Omnius.connections.arduino.digitalWrite(10, 0);
 			Omnius.connections.arduino.digitalWrite(7, 0);
 			Omnius.connections.arduino.digitalWrite(9, 0);
@@ -107,7 +107,7 @@ var Omnius = Cylon.robot({
 			Omnius.connections.arduino.digitalWrite(6, 1);
 			Omnius.connections.arduino.digitalWrite(5, 0);
 		});
-		after((5).seconds(), function() {
+		after((1).seconds(), function() {
 			Omnius.connections.arduino.digitalWrite(10, 0);
 			Omnius.connections.arduino.digitalWrite(7, 0);
 			Omnius.connections.arduino.digitalWrite(9, 0);
@@ -132,7 +132,7 @@ var Omnius = Cylon.robot({
 			Omnius.connections.arduino.digitalWrite(6, 0);
 			Omnius.connections.arduino.digitalWrite(5, 1);
 		});
-		after((5).seconds(), function() {
+		after((1).seconds(), function() {
 			Omnius.connections.arduino.digitalWrite(10, 0);
 			Omnius.connections.arduino.digitalWrite(7, 0);
 			Omnius.connections.arduino.digitalWrite(9, 0);
@@ -326,11 +326,36 @@ var Omnius = Cylon.robot({
 	dance: function(){
 		after((0.1).seconds(), function(){
 			Omnius.commands.left();
-			Omnius.liftArms();
+			Omnius.commands.liftArms();
+		});
+		after((0.3).seconds(), function(){
+			Omnius.commands.left();
+			Omnius.commands.wave();
 		});
 		after((2).seconds(), function(){
 			Omnius.commands.right();
 			Omnius.commands.lowerArms();
+		});
+		after((2.5).seconds(), function(){
+			Omnius.commands.left();
+			Omnius.commands.lowerArms();
+		});
+		after((2.7).seconds(), function(){
+			Omnius.commands.left();
+			Omnius.commands.liftLeftArm();
+		});
+		after((3).seconds(), function(){
+			Omnius.commands.left();
+			Omnius.commands.liftRightArm();
+			Omnius.commands.liftLeftArm();
+		});
+		after((3.5).seconds(), function(){
+			Omnius.commands.left();
+			Omnius.commands.lowerRightArm();
+		});
+		after((4).seconds(), function(){
+			Omnius.commands.left();
+			Omnius.commands.liftLeftArm();
 		});
 		after((5).seconds(), function(){
 			Omnius.commands.lowerLeftArm();
