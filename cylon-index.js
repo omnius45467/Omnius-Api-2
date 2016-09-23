@@ -213,19 +213,19 @@ var Omnius = Cylon.robot({
 	headCenter: function(){
 		after((0.1).seconds(), function () {
 	
-			// Omnius.head.angle(90);
+			Omnius.head.angle(90);
 		});
 	},
 	headRight: function(){
 		after((0.1).seconds(), function () {
 	
-			// Omnius.head.angle(0);
+			Omnius.head.angle(0);
 		});
 	},
 	headLeft: function(){
 		after((0.1).seconds(), function () {
 
-			// Omnius.head.angle(180);
+			Omnius.head.angle(180);
 		});
 	},
 	lowerLeftArm: function(){
@@ -325,39 +325,46 @@ var Omnius = Cylon.robot({
 	},
 	dance: function(){
 		after((0.1).seconds(), function(){
+			Omnius.commands.headCenter();
 			Omnius.commands.left();
 			Omnius.commands.liftArms();
 		});
 		after((0.3).seconds(), function(){
+			Omnius.commands.headLeft();
 			Omnius.commands.left();
 			Omnius.commands.wave();
 		});
-		after((1).seconds(), function(){
+		after((0.6).seconds(), function(){
 			Omnius.commands.right();
 			Omnius.commands.lowerArms();
 		});
-		after((1.5).seconds(), function(){
+		after((0.8).seconds(), function(){
+			Omnius.commands.headRight();
 			Omnius.commands.left();
 			Omnius.commands.lowerArms();
 		});
-		after((1.7).seconds(), function(){
+		after((1).seconds(), function(){
+			Omnius.commands.headCenter();
+			Omnius.commands.left();
+			Omnius.commands.liftLeftArm();
+		});
+		after((1.2).seconds(), function(){
+			Omnius.commands.headLeft();
+			Omnius.commands.left();
+			Omnius.commands.liftArms();
+		});
+		after((1.4).seconds(), function(){
+			Omnius.commands.headCenter();
+			Omnius.commands.left();
+			Omnius.commands.lowerRightArm();
+		});
+		after((1.8).seconds(), function(){
+			Omnius.commands.headLeft();
 			Omnius.commands.left();
 			Omnius.commands.liftLeftArm();
 		});
 		after((2).seconds(), function(){
-			Omnius.commands.left();
-			Omnius.commands.liftRightArm();
-			Omnius.commands.liftLeftArm();
-		});
-		after((2.3).seconds(), function(){
-			Omnius.commands.left();
-			Omnius.commands.lowerRightArm();
-		});
-		after((2.7).seconds(), function(){
-			Omnius.commands.left();
-			Omnius.commands.liftLeftArm();
-		});
-		after((3).seconds(), function(){
+			Omnius.commands.headCenter();
 			Omnius.commands.lowerLeftArm();
 			Omnius.commands.wave();
 		});
