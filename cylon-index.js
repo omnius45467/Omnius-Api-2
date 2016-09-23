@@ -107,7 +107,7 @@ var Omnius = Cylon.robot({
 			Omnius.connections.arduino.digitalWrite(6, 1);
 			Omnius.connections.arduino.digitalWrite(5, 0);
 		});
-		after((2).seconds(), function() {
+		after((1).seconds(), function() {
 			Omnius.connections.arduino.digitalWrite(10, 0);
 			Omnius.connections.arduino.digitalWrite(7, 0);
 			Omnius.connections.arduino.digitalWrite(9, 0);
@@ -132,7 +132,7 @@ var Omnius = Cylon.robot({
 			Omnius.connections.arduino.digitalWrite(6, 0);
 			Omnius.connections.arduino.digitalWrite(5, 1);
 		});
-		after((2).seconds(), function() {
+		after((1).seconds(), function() {
 			Omnius.connections.arduino.digitalWrite(10, 0);
 			Omnius.connections.arduino.digitalWrite(7, 0);
 			Omnius.connections.arduino.digitalWrite(9, 0);
