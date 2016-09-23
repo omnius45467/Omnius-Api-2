@@ -329,41 +329,41 @@ var Omnius = Cylon.robot({
 			Omnius.commands.left();
 			Omnius.commands.liftArms();
 		});
-		after((0.3).seconds(), function(){
+		after((2).seconds(), function(){
 			Omnius.commands.headLeft();
 			Omnius.commands.left();
 			Omnius.commands.wave();
 		});
-		after((0.6).seconds(), function(){
+		after((4).seconds(), function(){
 			Omnius.commands.right();
 			Omnius.commands.lowerArms();
 		});
-		after((0.8).seconds(), function(){
+		after((6).seconds(), function(){
 			Omnius.commands.headRight();
 			Omnius.commands.left();
 			Omnius.commands.lowerArms();
 		});
-		after((1).seconds(), function(){
+		after((8).seconds(), function(){
 			Omnius.commands.headCenter();
 			Omnius.commands.left();
 			Omnius.commands.liftLeftArm();
 		});
-		after((1.2).seconds(), function(){
+		after((10).seconds(), function(){
 			Omnius.commands.headLeft();
 			Omnius.commands.left();
 			Omnius.commands.liftArms();
 		});
-		after((1.4).seconds(), function(){
+		after((12).seconds(), function(){
 			Omnius.commands.headCenter();
 			Omnius.commands.left();
 			Omnius.commands.lowerRightArm();
 		});
-		after((1.8).seconds(), function(){
+		after((14).seconds(), function(){
 			Omnius.commands.headLeft();
 			Omnius.commands.left();
 			Omnius.commands.liftLeftArm();
 		});
-		after((2).seconds(), function(){
+		after((16).seconds(), function(){
 			Omnius.commands.headCenter();
 			Omnius.commands.lowerLeftArm();
 			Omnius.commands.wave();
